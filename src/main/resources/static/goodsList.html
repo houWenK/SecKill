@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>商品列表</title>
+    <!-- jquery -->
+    <script type="text/javascript" src="/js/jquery.min.js"></script>
+    <!-- bootstrap -->
+    <link rel="stylesheet" type="text/css" href="/bootstrap/css/bootstrap.min.css"/>
+    <script type="text/javascript" src="/bootstrap/js/bootstrap.min.js"></script>
+    <!-- layer -->
+    <script type="text/javascript" src="/layer/layer.js"></script>
+    <!-- common.js -->
+    <script type="text/javascript" src="/js/common.js"></script>
+</head>
+<body>
+<div class="panel panel-default">
+    <div class="panel-heading">秒杀商品列表</div>
+    <table class="table" id="goodslist">
+        <thead>
+        <tr>
+            <th>商品名称</th>
+            <th>商品图片</th>
+            <th>商品原价</th>
+            <th>秒杀价</th>
+            <th>库存数量</th>
+            <th>详情</th>
+        </tr>
+        </thead>
+        <tbody id="goodsTableBody">
+        <!-- 商品列表内容将由JavaScript动态填充 -->
+        </tbody>
+    </table>
+</div>
+
+<script>
+    // 页面加载时获取商品列表
+    $(document).ready(function () {
+        loadGoodsList();
+    });
+
+    // 获取商品列表数据
+    function loadGoodsList() {
+        $.ajax({
+            url: '/goods/tolist',  // 后端提供的商品列表API接口
+            type: 'GET',
+            success: function (data) {
+                if (data.code == 200) {
+                    var goodsList = data.object;  // 假设返回的商品数据在 object 属性中
+                    var tableBody = $('#goodsTableBody');
+                    tableBody.empty();  // 清空表格内容
+                    goodsList.forEach(function (goods) {
+                        var row = '<tr>' +
+                            '<td>' + goods.goodsName + '</td>' +
+                            '<td><img src="' + goods.goodsImg + '" width="100" height="100"/></td>' +
+                            '<td>' + goods.goodsPrice + '</td>' +
+                            '<td>' + goods.seckillPrice + '</td>' +
+                            '<td>' + goods.stockCount + '</td>' +
+                            '<td><a href="/goodsDetail.html?goodsId=' + goods.id + '">详情</a></td>' +
+                            '</tr>';
+                        tableBody.append(row);
+                    });
+                } else {
+                    layer.msg(data.message);
+                }
+            },
+            error: function () {
+                layer.msg("客户端请求出错");
+            }
+        });
+    }
+</script>
+</body>
+</html>
