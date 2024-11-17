@@ -1,7 +1,7 @@
 # 秒杀项目
 
 - [项目视频](https://www.bilibili.com/video/BV1sf4y1L7KE?spm_id_from=333.788.videopod.episodes&vd_source=4f40c99cfbf223a3b2d12ae621a8bebf)
-- 项目地址：
+- 项目地址：[houWenK/SecKill: 用于学习的秒杀项目 (github.com)](https://github.com/houWenK/SecKill)
 - 项目笔记：[秒杀项目 | houWenk's Blog (houwenke.top)](https://houwenke.top/2024/11/17/秒杀项目/)
 
 ## 介绍
@@ -22,7 +22,7 @@
 
 ## 数据库表
 
-![Diagram 1](../../Blog/source/_posts/秒杀项目/Diagram 1.jpg)
+![Diagram 1](img/Diagram 1.jpg)
 
 ## 基础功能
 
@@ -30,34 +30,34 @@
 
 LoginController
 
-![image-20241117210337181](../../Blog/source/_posts/秒杀项目/image-20241117210337181.png)
+![image-20241117210337181](img/image-20241117210337181.png)
 
 ### 商品列表页
 
 GoodsController
 
-![image-20241117210400328](../../Blog/source/_posts/秒杀项目/image-20241117210400328.png)
+![image-20241117210400328](img/image-20241117210400328.png)
 
 ### 商品详情页
 
 SeckillOrderController
 
-### ![image-20241117210854857](../../Blog/source/_posts/秒杀项目/image-20241117210854857.png)
+### ![image-20241117210854857](img/image-20241117210854857.png)
 
 ### 订单详情页
 
 OrderController
 
-![image-20241117212646739](../../Blog/source/_posts/秒杀项目/image-20241117212646739.png)
+![image-20241117212646739](img/image-20241117212646739.png)
 
 ## 优化效果
 
 **/seckillorder/doseckill**接口  压测结果     1955.2
 
-![image-20241117224108590](../../Blog/source/_posts/秒杀项目/image-20241117224108590.png)
+![image-20241117224108590](img/image-20241117224108590.png)
 
 **/seckillorder/doseckill1**接口  压测结果        5841.1
 
-![image-20241117224351092](../../Blog/source/_posts/秒杀项目/image-20241117224351092.png)
+![image-20241117224351092](img/image-20241117224351092.png)
 
 可以看到提升还是比较明显的，这得益于我们使用**redis预减库存** + **内存标记** + **MQ**提高了qps
