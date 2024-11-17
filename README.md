@@ -22,7 +22,7 @@
 
 ## 数据库表
 
-![Diagram 1](img/Diagram 1.jpg)
+![](img/a.jpg)
 
 ## 基础功能
 
